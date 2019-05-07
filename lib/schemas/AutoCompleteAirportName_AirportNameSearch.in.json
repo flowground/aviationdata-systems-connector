@@ -1,0 +1,22 @@
+{
+    "type": "object",
+    "properties": {
+        "airport_name": {
+            "required": true,
+            "type": "string"
+        },
+        "airport_service_type": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "All",
+                "Scheduled",
+                "NonScheduled"
+            ]
+        },
+        "optional_country_code": {
+            "required": false,
+            "type": "string"
+        }
+    }
+}

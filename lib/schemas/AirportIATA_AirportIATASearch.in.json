@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "airport_iata": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,144 @@
+{
+    "title": "AviationData.Systems Airports API V1",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/aviationdata.systems/v1/swagger.json",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://api.aviationdata.systems/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "username": {
+                "label": "Username (basic)",
+                "viewClass": "TextFieldView",
+                "note": "Basic HTTP Authentication"
+            },
+            "password": {
+                "label": "Password (basic)",
+                "viewClass": "TextFieldView",
+                "note": "Basic HTTP Authentication"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "AutoCompleteAirportName_AirportNameSearch": {
+            "main": "./lib/actions/AutoCompleteAirportName_AirportNameSearch.js",
+            "title": "Autocomplete airport names. Returns a maximum of 10 airport names.",
+            "description": "Required parameters: airport_name, airport_service_type. Optional parameter: country code (ISO 3166-1).",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AutoCompleteAirportName_AirportNameSearch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AirportIATA_AirportIATASearch": {
+            "main": "./lib/actions/AirportIATA_AirportIATASearch.js",
+            "title": "Search for airport by IATA code",
+            "description": "Required parameters: airport_iata",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AirportIATA_AirportIATASearch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AirportDetails_AirportNameSearch": {
+            "main": "./lib/actions/AirportDetails_AirportNameSearch.js",
+            "title": "Search for airport by name",
+            "description": "Required parameters: airport_name, api_mode",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AirportDetails_AirportNameSearch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "NearestAirports_NearestAirportList": {
+            "main": "./lib/actions/NearestAirports_NearestAirportList.js",
+            "title": "Search for airports by location",
+            "description": "Required parameters: result_count, latitude, longitude, airport_service_type",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/NearestAirports_NearestAirportList.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CountryAirportList_CountryAirportList": {
+            "main": "./lib/actions/CountryAirportList_CountryAirportList.js",
+            "title": "Country airports. Returns a list of airports for a country code(ISO 3166-1 alpha-2 code)",
+            "description": "Required parameters: country code (ISO 3166-1), airport_service_type.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CountryAirportList_CountryAirportList.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CountryList_CountryAirportList": {
+            "main": "./lib/actions/CountryList_CountryAirportList.js",
+            "title": "Country list. Returns a list of countries where airport data is available",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CountryList_CountryAirportList.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

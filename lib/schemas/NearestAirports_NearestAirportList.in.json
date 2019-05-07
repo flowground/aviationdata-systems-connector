@@ -1,0 +1,20 @@
+{
+    "type": "object",
+    "properties": {
+        "result_count": {
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+        },
+        "latitude": {
+            "required": true,
+            "type": "number",
+            "format": "double"
+        },
+        "longitude": {
+            "required": true,
+            "type": "number",
+            "format": "double"
+        }
+    }
+}
